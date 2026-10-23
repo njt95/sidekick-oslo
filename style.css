@@ -1,0 +1,148 @@
+/* Sidekick: Oslo - how everything LOOKS.
+   Each block below styles one kind of thing (a button, a card, a tag...). */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: #101828;
+  background: #E7EBF1;
+}
+
+button, input { font-family: inherit; color: inherit; }
+button { cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid #7CC9B3; outline-offset: 2px; }
+
+/* The phone-shaped box in the middle of the page */
+#app {
+  max-width: 430px;
+  height: 100vh;
+  max-height: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #F2F4F7;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 500px) {
+  #app { margin-top: calc((100vh - min(100vh, 900px)) / 2); box-shadow: 0 10px 40px rgba(16, 24, 40, 0.15); }
+}
+
+/* One screen at a time lives inside .stage */
+.stage { flex: 1; min-height: 0; position: relative; }
+.screen {
+  position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+  padding: 52px 20px 24px;
+  background: #F2F4F7;
+}
+.screen > * { flex-shrink: 0; }  /* stop things being squashed when the screen is tall */
+.screen.onboard { padding: 56px 24px 24px; }
+.grow { flex: 1; min-height: 20px; }
+
+/* Text */
+.h { font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-weight: 700; line-height: 1.1; }
+.title { font-size: 30px; }
+.muted { color: #5B6577; }
+.lbl { font-size: 14px; font-weight: 700; margin: 20px 0 10px; display: block; }
+.small { font-size: 14px; line-height: 1.4; }
+
+/* Buttons */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; min-height: 50px; padding: 0 20px;
+  border-radius: 14px; border: 0;
+  background: #0B7A5E; color: #fff;
+  font-size: 16px; font-weight: 700;
+}
+.btn.sec { background: #fff; color: #101828; border: 1.5px solid #DDE2EA; }
+.btn.small-btn { min-height: 46px; font-size: 15px; }
+.btn.shared { background: #DDF3EC; color: #06573F; border-color: #B7E0D3; }
+.linkbtn { margin-top: 8px; min-height: 48px; border: 0; background: transparent; font-size: 15px; font-weight: 700; color: #B42318; }
+.back {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid #DDE2EA; background: #fff;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Chips: the little pill buttons you tap to choose something */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips.scroll { flex-wrap: nowrap; overflow-x: auto; margin: 16px -20px 0; padding: 0 20px 4px; }
+.chip {
+  min-height: 44px; padding: 0 16px; border-radius: 999px;
+  border: 1.5px solid #DDE2EA; background: #fff;
+  font-size: 15px; font-weight: 500; white-space: nowrap; flex: none;
+}
+.chip.on { background: #101828; color: #fff; border-color: #101828; }
+.chip.quick { font-size: 14px; }
+
+/* Cards and tags */
+.card { background: #fff; border: 1px solid #DDE2EA; border-radius: 18px; padding: 16px; }
+.cardbtn { display: block; width: 100%; text-align: left; }
+.list { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+.tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.tag { font-size: 13px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: #E7EBF1; color: #344054; white-space: nowrap; }
+.tag.warn { background: #FEF0C7; color: #7A2E0E; }
+.tag.good { background: #DDF3EC; color: #06573F; }
+.notice { background: #DDF3EC; border-color: #B7E0D3; color: #06573F; font-size: 15px; line-height: 1.4; }
+.notice.amber { background: #FEF0C7; border-color: #F5D68A; color: #7A2E0E; }
+.notice.grey { background: #E7EBF1; border-color: #DDE2EA; color: #101828; }
+
+/* People */
+.person { display: flex; align-items: center; gap: 12px; }
+.ava { border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #101828; flex: none; }
+.ver { display: flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: #06573F; }
+.row { display: flex; align-items: center; gap: 8px; font-size: 15px; margin-top: 6px; }
+
+/* Text fields */
+.inp {
+  width: 100%; min-height: 50px; padding: 0 16px;
+  border-radius: 14px; border: 1.5px solid #DDE2EA; background: #fff;
+  font-size: 16px;
+}
+.codes { display: flex; gap: 12px; margin-top: 32px; }
+.codes .inp { text-align: center; font-size: 24px; font-weight: 700; padding: 0; }
+
+/* Sign-up progress dots */
+.dots { display: flex; gap: 6px; }
+.dot { height: 4px; flex: 1; border-radius: 4px; background: #DDE2EA; }
+.dot.on { background: #0B7A5E; }
+.selfie {
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 3px dashed #9AA4B5; background: #fff; color: #5B6577;
+  display: flex; align-items: center; justify-content: center;
+  margin: 32px auto 0;
+}
+
+/* The "pretend to be the host" box (only for demos) */
+.demo { border: 1.5px dashed #9AA4B5; border-radius: 18px; padding: 14px; margin-top: 12px; }
+.demo-btns { display: flex; gap: 8px; margin-top: 10px; }
+
+/* Requests on the My plans screen */
+.request { border: 1px solid #DDE2EA; border-radius: 16px; padding: 12px; margin-top: 10px; }
+.request-btns { display: flex; gap: 8px; margin-top: 12px; }
+
+/* Match screen */
+.checkcircle { width: 64px; height: 64px; border-radius: 50%; background: #0B7A5E; color: #fff; display: flex; align-items: center; justify-content: center; }
+.center { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 8px; }
+.chat { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.bubble { max-width: 80%; padding: 10px 14px; border-radius: 16px; font-size: 15px; line-height: 1.35; background: #E7EBF1; align-self: flex-start; }
+.bubble.me { background: #0B7A5E; color: #fff; align-self: flex-end; }
+
+/* Bottom tab bar */
+.tabs { display: flex; background: #fff; border-top: 1px solid #DDE2EA; padding-bottom: 8px; }
+.tab {
+  flex: 1; min-height: 64px; border: 0; background: transparent;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  font-size: 12px; font-weight: 700; color: #5B6577; position: relative;
+}
+.tab.on { color: #0B7A5E; }
+.badge {
+  position: absolute; top: 8px; left: calc(50% + 10px);
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: #B42318; color: #fff; font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+}
